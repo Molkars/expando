@@ -1,0 +1,10 @@
+name: Expando
+version: '${project.version}'
+main: com.github.molkars.expando.Expando
+api-version: 1.17
+authors: [ Molkars ]
+commands:
+  expando:
+    description: Start the border
+    permission-message: No perms
+    usage: expando <world-name>
