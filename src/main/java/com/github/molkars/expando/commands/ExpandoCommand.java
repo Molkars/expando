@@ -1,7 +1,7 @@
 package com.github.molkars.expando.commands;
 
 import com.github.molkars.expando.Expando;
-import com.github.molkars.expando.data.model.WorldDataSchema;
+import com.github.molkars.expando.data.WorldConfiguration;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -36,7 +36,7 @@ public class ExpandoCommand implements CommandExecutor, TabCompleter {
   }
 
   private boolean executeStatusCommand(CommandSender sender, Command command, String label, String[] args) {
-    WorldDataSchema world = Expando.instance.world;
+    WorldConfiguration world = Expando.world;
     sender.sendMessage(Component.text(ChatColor.GOLD + "Mob Kills: " + world.getMobCount()));
     sender.sendMessage(Component.text(ChatColor.GOLD + "Passive Kills: " + world.getPassiveCount()));
     sender.sendMessage(Component.text(ChatColor.GOLD + "Size: " + world.getSize()));
@@ -44,9 +44,7 @@ public class ExpandoCommand implements CommandExecutor, TabCompleter {
   }
 
   private boolean executeStartCommand(CommandSender sender, Command command, String label, String[] args) {
-    WorldDataSchema world = new WorldDataSchema();
-    world.setSize(8);
-    world.setLastTime(0);
+    Expando.world.setSize(8);
     String name;
     Location location;
     if (sender instanceof Player) {
@@ -58,15 +56,13 @@ public class ExpandoCommand implements CommandExecutor, TabCompleter {
       name = first.getName();
     }
 
-    world.setCenterX(location.getX());
-    world.setCenterY(location.getY());
-    world.setCenterZ(location.getZ());
-    world.setDamage(10);
-    world.setDamageGracePeriod(10);
-    world.setName(name);
+    Expando.world.setCenterX(location.getX());
+    Expando.world.setCenterY(location.getY());
+    Expando.world.setCenterZ(location.getZ());
+    Expando.world.setDamage(10);
+    Expando.world.setDamageGracePeriod(10);
+    Expando.world.setWorldName(name);
 
-    Expando.instance.world = world;
-    Expando.instance.run();
     sender.sendMessage("Updated world");
     return true;
   }

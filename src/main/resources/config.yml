@@ -1,0 +1,27 @@
+scores:
+  creature:
+    count: 250
+    expand-by: 2
+    non-player-kill: 1
+    player-kill: 5
+  monster:
+    count: 100
+    expand-by: 2
+    non-player-kill: 1
+    player-kill: 5
+  wither:
+    count: 1000
+    expand-by: 8
+    non-player-kill: 100
+    player-kill: 1000
+  ender-dragon:
+    count: 1000
+    expand-by: 16
+    non-player-kill: 500
+    player-kill: 1000
+
+time:
+  blocks-per-time: 2 # the number of blocks the diameter travels everyday
+  max-expansion: 128
+  expansion-interval: 24000 # Number of ticks, 24000 ticks is one day
+  message: A day has passed and the border has expanded by {{blocks-per-time}} blocks
