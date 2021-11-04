@@ -7,4 +7,10 @@ commands:
   expando:
     description: Start the border
     permission-message: No perms
-    usage: expando <world-name>
+    usage: |
+      expando <sub-command>
+
+      Available Subcommands:
+        start <radius> | Start the world border
+        status         | The status of current group/world you are in (kill counts, size)
+    subcommands:
